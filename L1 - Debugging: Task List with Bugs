@@ -1,33 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Debugging Task</title>
+  <title>Task List</title>
 </head>
 <body>
-  <p id="message">Original Message</p>
-  <button id="textButton">Change Text</button>
-  <br><br>
-  <div id="box" style="width: 100px; height: 100px; background-color: lightgray;"></div>
-  <button id="colorButton">Change Background</button>
+  <input id="taskInput" type="text" placeholder="Enter task">
+  <button id="addTask">Add Task</button>
+  <ul id="taskList"></ul>
 
   <script>
-    const para = document.querySelector('#message');
-    
-    const textButton = document.getElementById('textButton');
-  
-    
-    textButton.addEventListener('click', () => {
-      para.textContent = 'New Message';
-    });
+    const addTaskButton = document.getElementById('addTask');
+    const taskInput = document.getElementById('taskInput');
+    const taskList = document.getElementById('taskList');
 
-    const box = document.getElementById('box');
-    const colorButton = document.getElementById('colorButton');
-    
-    colorButton.addEventListener('click', () => {
-      box.style.backgroundColor = 'blue';
-    });
+    addTaskButton.onclick = function () {
+      const taskText = taskInput.value.trim(); // Prevent empty tasks
+      if (taskText === "") {
+        alert("Please enter a task!"); 
+        return;
+      }
+      
+      const newTask = document.createElement('li');
+      newTask.textContent = taskText; // Use textContent to prevent HTML injection
+      taskList.appendChild(newTask); // Fixed method
+
+      taskInput.value = ""; // Clear input field after adding task
+    };
+
+    taskList.onclick = function (e) {
+      if (e.target.tagName === 'LI') { // Fixed condition
+        e.target.remove();
+      }
+    };
   </script>
 </body>
 </html>
