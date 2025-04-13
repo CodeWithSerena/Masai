@@ -1,0 +1,29 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    padding: 20px;
+  }
+  
+  form {
+    margin-bottom: 20px;
+  }
+  
+  input, select {
+    margin: 5px;
+    padding: 8px;
+    width: 200px;
+  }
+  
+  button {
+    padding: 10px 20px;
+    margin: 10px;
+    cursor: pointer;
+  }
+  
+  #products div {
+    border: 1px solid #ccc;
+    margin: 10px auto;
+    padding: 10px;
+    width: 300px;
+  }
+  
